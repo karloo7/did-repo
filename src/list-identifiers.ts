@@ -7,7 +7,7 @@ async function main() {
 
   if (identifiers.length > 0) {
     identifiers.map((id) => {
-      console.log(id)
+      console.log(JSON.stringify(id, null, 2))
       console.log('..................')
     })
   }
