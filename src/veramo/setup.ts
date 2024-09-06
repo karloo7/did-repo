@@ -14,7 +14,10 @@ import {
   
   // Ethr did identity provider
   import { EthrDIDProvider } from '@veramo/did-provider-ethr'
-  
+
+  import { WebDIDProvider } from '@veramo/did-provider-web'
+  import { KeyDIDProvider } from '@veramo/did-provider-key'
+
   // Core key manager plugin
   import { KeyManager } from '@veramo/key-manager'
   
@@ -29,6 +32,7 @@ import {
   import { Resolver } from 'did-resolver'
   import { getResolver as ethrDidResolver } from 'ethr-did-resolver'
   import { getResolver as webDidResolver } from 'web-did-resolver'
+  import { getResolver as keyDidReslover } from 'key-did-resolver'
   
   // Storage plugin using TypeOrm
   import { Entities, KeyStore, DIDStore, PrivateKeyStore, migrations } from '@veramo/data-store'
@@ -54,6 +58,7 @@ const dbConnection = new DataSource({
   logging: ['error', 'info', 'warn'],
   entities: Entities,
 }).initialize()
+const defaultProvider = 'did:ethr:sepolia';
 
 export const agent = createAgent<
   IDIDManager & IKeyManager & IDataStore & IDataStoreORM & IResolver & ICredentialPlugin
@@ -67,19 +72,26 @@ export const agent = createAgent<
     }),
     new DIDManager({
       store: new DIDStore(dbConnection),
-      defaultProvider: 'did:ethr:sepolia',
+      defaultProvider: defaultProvider,
       providers: {
         'did:ethr:sepolia': new EthrDIDProvider({
           defaultKms: 'local',
           network: 'sepolia',
-          rpcUrl: 'https://sepolia.infura.io/v3/' + INFURA_PROJECT_ID,
+          rpcUrl: 'https://sepolia.infura.io/v3/d4200605ccfd41ce9b58bf86c090bb2d',
         }),
+        'did:web': new WebDIDProvider({
+          defaultKms: 'local'
+        }),
+        'did:key': new KeyDIDProvider({
+          defaultKms: 'local'
+        })
       },
     }),
     new DIDResolverPlugin({
       resolver: new Resolver({
         ...ethrDidResolver({ infuraProjectId: INFURA_PROJECT_ID }),
         ...webDidResolver(),
+        ...keyDidReslover()
       }),
     }),
     new CredentialPlugin(),
