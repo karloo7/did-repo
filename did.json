@@ -1,3 +1,25 @@
 {
-    "id": "did:web:karloo7.github.io:did-repo"
-}
+    "did": "did:web:karloo7.github.io:did-repo",
+    "provider": "did:web",
+    "alias": "karloo7.github.io:did-repo",
+    "controllerKeyId": "0467114e89b14e99316bdfcea38a9da7a7a750fe69689cfef425c1bdb588c6bc53af65004b5fb6cc1c19849888e7f364f8b533d7a1d0cb64b058925908775ac168",
+    "keys": [
+      {
+        "kid": "0467114e89b14e99316bdfcea38a9da7a7a750fe69689cfef425c1bdb588c6bc53af65004b5fb6cc1c19849888e7f364f8b533d7a1d0cb64b058925908775ac168",
+        "kms": "local",
+        "type": "Secp256k1",
+        "publicKeyHex": "0467114e89b14e99316bdfcea38a9da7a7a750fe69689cfef425c1bdb588c6bc53af65004b5fb6cc1c19849888e7f364f8b533d7a1d0cb64b058925908775ac168",
+        "meta": {
+          "algorithms": [
+            "ES256K",
+            "ES256K-R",
+            "eth_signTransaction",
+            "eth_signTypedData",
+            "eth_signMessage",
+            "eth_rawSign"
+          ]
+        }
+      }
+    ],
+    "services": []
+  }
