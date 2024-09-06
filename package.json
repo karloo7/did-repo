@@ -5,7 +5,6 @@
   "license": "MIT",
   "type": "module",
   "devDependencies": {
-    "npx": "^10.2.2",
     "ts-node": "^10.9.2",
     "tsx": "^4.17.0",
     "typescript": "^5.5.4"
@@ -16,12 +15,15 @@
     "@veramo/data-store": "^6.0.0",
     "@veramo/did-manager": "^6.0.0",
     "@veramo/did-provider-ethr": "^6.0.0",
+    "@veramo/did-provider-web": "^6.0.0",
+    "@veramo/did-provider-key": "^6.0.0",
     "@veramo/did-resolver": "^6.0.0",
     "@veramo/key-manager": "^6.0.0",
     "@veramo/kms-local": "^6.0.0",
     "ethr-did-resolver": "^10.1.10",
+    "web-did-resolver": "^2.0.0",
+    "key-did-resolver": "^2.0.0",
     "sqlite3": "^5.1.7",
-    "typeorm": "^0.3.20",
-    "web-did-resolver": "^2.0.27"
+    "typeorm": "^0.3.20"
   }
 }
